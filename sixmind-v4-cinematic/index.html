@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="SixMind — inteligência operacional que conecta dados, atendimento, pipeline, agenda, canais e integrações." />
+  <title>SixMind — Inteligência que move operações</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <canvas id="dataFlow" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a href="#hero" class="brand" aria-label="SixMind - início">
+      <img src="assets/logo-sixmind.png" alt="SixMind" />
+    </a>
+    <nav>
+      <a href="#demo">Demonstração</a>
+      <a href="#journey">Plataforma</a>
+      <a href="#cta">Contato</a>
+    </nav>
+    <a href="#cta" class="nav-cta">Mapear gargalo</a>
+  </header>
+
+  <main>
+    <section id="hero" class="hero section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">INTELIGÊNCIA OPERACIONAL</div>
+        <h1>Uma conversa pode<br><span>mover uma operação inteira.</span></h1>
+        <p>
+          A SixMind conecta canais, interpreta contexto, organiza dados e aciona processos.
+          O atendimento deixa de ser uma ponta isolada e passa a mover a empresa.
+        </p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn primary">Ver a inteligência em ação</a>
+          <a href="#journey" class="btn ghost">Entrar na plataforma</a>
+        </div>
+        <div class="tagline">AUTOMATIZE. ORGANIZE. ESCALE.</div>
+      </div>
+
+      <div class="hero-system reveal" aria-hidden="true">
+        <div class="system-orbit orbit-1"></div>
+        <div class="system-orbit orbit-2"></div>
+        <div class="system-orbit orbit-3"></div>
+        <div class="system-core">SM</div>
+        <div class="hero-node n-whatsapp">WhatsApp</div>
+        <div class="hero-node n-crm">CRM</div>
+        <div class="hero-node n-agenda">Agenda</div>
+        <div class="hero-node n-ai">IA</div>
+        <div class="hero-node n-email">Email</div>
+      </div>
+    </section>
+
+    <section id="demo" class="demo section">
+      <div class="demo-copy">
+        <div class="eyebrow">DEMONSTRAÇÃO INTERATIVA</div>
+        <h2>Escolha uma operação.<br><span>Veja a SixMind pensar.</span></h2>
+        <p>
+          A conversa muda por nicho, mas a inteligência segue o mesmo princípio:
+          entender o contexto, organizar o dado, decidir a ação e conduzir o próximo passo.
+        </p>
+
+        <div class="scenario-tabs" role="tablist" aria-label="Cenários de demonstração">
+          <button class="active" data-scenario="b2b">Vendas B2B</button>
+          <button data-scenario="saude">Saúde</button>
+          <button data-scenario="telecom">Telecom</button>
+          <button data-scenario="imob">Imobiliário</button>
+          <button data-scenario="varejo">Varejo</button>
+        </div>
+
+        <div class="logic-panel">
+          <div class="logic-head">
+            <span>AÇÕES NOS BASTIDORES</span>
+            <span id="logicStatus" class="status-live">AO VIVO</span>
+          </div>
+          <div id="logicFeed" class="logic-feed" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="phone-zone">
+        <div class="phone-halo"></div>
+        <div class="phone" id="demoPhone">
+          <div class="phone-side left-side side-top"></div>
+          <div class="phone-side left-side side-bottom"></div>
+          <div class="phone-side right-side power"></div>
+          <div class="phone-shell">
+            <div class="phone-glass">
+              <div class="dynamic-island">
+                <span></span><i></i>
+              </div>
+              <div class="chat-header">
+                <div class="chat-avatar">SM</div>
+                <div>
+                  <strong>SixMind AI</strong>
+                  <small>online · canal seguro</small>
+                </div>
+                <span class="online-dot"></span>
+              </div>
+              <div id="chat" class="chat" aria-live="polite"></div>
+              <div class="chat-composer">
+                <span>Mensagem...</span>
+                <button aria-label="Enviar mensagem">➤</button>
+              </div>
+              <div class="glass-reflection"></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-instruction">MOVA O CURSOR · ROLE PARA ENTRAR NA OPERAÇÃO ↓</div>
+      </div>
+    </section>
+
+    <section id="journey" class="journey">
+      <div class="journey-stage" id="journeyStage">
+        <div class="journey-copy" id="journeyCopy">
+          <div class="eyebrow">POR TRÁS DA RESPOSTA</div>
+          <h2>Agora entre<br>na plataforma.</h2>
+          <p>O scroll vira a câmera. Cada ação da conversa movimenta uma etapa da operação.</p>
+        </div>
+
+        <div class="cinema" id="cinema">
+          <div class="portal-phone" id="portalPhone">
+            <div class="portal-shell">
+              <div class="portal-glass">
+                <div class="portal-island"></div>
+                <div class="portal-title">SixMind AI</div>
+                <div class="portal-bubble">Entendi. Vou organizar isso para você.</div>
+                <div class="portal-bubble gold">Lead qualificado · próximo passo definido</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen-tunnel" id="screenTunnel" aria-hidden="true">
+            <div class="tunnel-line l1"></div>
+            <div class="tunnel-line l2"></div>
+            <div class="tunnel-line l3"></div>
+            <div class="tunnel-line l4"></div>
+          </div>
+
+          <div class="platform-stage" id="platformStage">
+            <article class="platform-scene active" data-scene="0" data-name="Conversas">
+              <div class="screen-wrap screen-conversations">
+                <img src="assets/platform-conversas.png" alt="Central de conversas da plataforma SixMind" decoding="async" />
+              </div>
+              <div class="scene-caption">
+                <span class="scene-num">01</span>
+                <div><strong>Atendimento centralizado</strong><small>Todos os canais convergem para a mesma operação.</small></div>
+              </div>
+              <div class="action-chip chip-a">mensagem recebida</div>
+              <div class="action-chip chip-b">intenção identificada</div>
+            </article>
+
+            <article class="platform-scene" data-scene="1" data-name="Pipeline">
+              <div class="screen-wrap screen-pipeline">
+                <img src="assets/platform-pipeline.png" alt="Pipeline inteligente da plataforma SixMind" loading="lazy" decoding="async" />
+              </div>
+              <div class="scene-caption">
+                <span class="scene-num">02</span>
+                <div><strong>Pipeline inteligente</strong><small>O contato avança conforme contexto, intenção e próxima ação.</small></div>
+              </div>
+              <div class="action-chip chip-a">lead criado</div>
+              <div class="action-chip chip-b">etapa atualizada</div>
+            </article>
+
+            <article class="platform-scene" data-scene="2" data-name="Agenda">
+              <div class="screen-wrap screen-agenda">
+                <img src="assets/platform-agenda.png" alt="Agendamentos cadastrados por IA na plataforma SixMind" loading="lazy" decoding="async" />
+              </div>
+              <div class="scene-caption">
+                <span class="scene-num">03</span>
+                <div><strong>Agendamentos por IA</strong><small>A conversa evolui para compromisso sem quebrar o fluxo.</small></div>
+              </div>
+              <div class="action-chip chip-a">disponibilidade consultada</div>
+              <div class="action-chip chip-b">horário confirmado</div>
+            </article>
+
+            <article class="platform-scene" data-scene="3" data-name="Canais">
+              <div class="screen-wrap screen-channels">
+                <img src="assets/platform-canais.png" alt="Canais disponíveis para conexão na SixMind" loading="lazy" decoding="async" />
+              </div>
+              <div class="scene-caption">
+                <span class="scene-num">04</span>
+                <div><strong>Canais conectados</strong><small>WhatsApp, Instagram, Messenger, Telegram, voz, email e webchat.</small></div>
+              </div>
+              <div class="action-chip chip-a">origem preservada</div>
+              <div class="action-chip chip-b">contexto unificado</div>
+            </article>
+
+            <article class="platform-scene integrations" data-scene="4" data-name="Integrações">
+              <div class="integration-grid">
+                <img src="assets/platform-integracoes-1.png" alt="Integrações SixMind - modelos e automação" loading="lazy" decoding="async" />
+                <img src="assets/platform-integracoes-2.png" alt="Integrações SixMind - comunicação e modelos" loading="lazy" decoding="async" />
+                <img src="assets/platform-integracoes-3.png" alt="Integrações SixMind - produtividade e dados" loading="lazy" decoding="async" />
+                <img src="assets/platform-integracoes-4.png" alt="Integrações SixMind - pagamentos e dados" loading="lazy" decoding="async" />
+              </div>
+              <div class="scene-caption">
+                <span class="scene-num">05</span>
+                <div><strong>Integrações e inteligência</strong><small>Modelos, automações, dados, comunicação e ferramentas externas.</small></div>
+              </div>
+              <div class="action-chip chip-a">ação externa disparada</div>
+              <div class="action-chip chip-b">ecossistema conectado</div>
+            </article>
+          </div>
+
+          <div class="flow-nodes" id="flowNodes" aria-hidden="true">
+            <span data-node="chat">CHAT</span>
+            <span data-node="pipeline">PIPELINE</span>
+            <span data-node="agenda">AGENDA</span>
+            <span data-node="channels">CANAIS</span>
+            <span data-node="integrations">INTEGRAÇÕES</span>
+          </div>
+        </div>
+
+        <div class="journey-progress"><span id="journeyProgress"></span></div>
+        <div class="journey-nav" id="journeyNav">
+          <button class="active" data-step="0">Conversa</button>
+          <button data-step="1">Pipeline</button>
+          <button data-step="2">Agenda</button>
+          <button data-step="3">Canais</button>
+          <button data-step="4">Integrações</button>
+        </div>
+        <div class="scene-status" id="sceneStatus">Conversa → atendimento centralizado</div>
+      </div>
+    </section>
+
+    <section class="network section">
+      <div class="network-copy">
+        <div class="eyebrow">UMA INTELIGÊNCIA. DIFERENTES OPERAÇÕES.</div>
+        <h2>A SixMind não vive<br>em uma única tela.</h2>
+        <p>
+          Ela conecta atendimento, vendas, suporte, CRM, agenda, documentos e automações
+          para que o dado percorra a empresa com contexto.
+        </p>
+      </div>
+      <div class="network-cards">
+        <div>Atendimento <span>→</span></div>
+        <div>Vendas <span>→</span></div>
+        <div>Suporte <span>→</span></div>
+        <div>CRM <span>→</span></div>
+        <div>Agenda <span>→</span></div>
+        <div>Documentos <span>→</span></div>
+        <div>Automação <span>→</span></div>
+        <div>Integrações <span>→</span></div>
+      </div>
+    </section>
+
+    <section id="cta" class="cta section">
+      <img src="assets/logo-sixmind.png" alt="SixMind" class="cta-logo" loading="lazy" decoding="async" />
+      <div class="eyebrow">INTELIGÊNCIA APLICADA À OPERAÇÃO</div>
+      <h2>Automatize. Organize. Escale.</h2>
+      <p>Não é IA por estética. É inteligência aplicada exatamente onde sua operação trava.</p>
+      <a href="#" class="btn primary">Mapear meu gargalo</a>
+    </section>
+  </main>
+
+  <script defer src="src/main.js"></script>
+</body>
+</html>
