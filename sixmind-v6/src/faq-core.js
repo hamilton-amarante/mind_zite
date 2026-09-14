@@ -1,0 +1,1 @@
+document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(x=>{if(x!==item)x.classList.remove('open')});item?.classList.toggle('open')}));
