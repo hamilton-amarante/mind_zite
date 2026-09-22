@@ -1,3 +1,4 @@
+import('./domain-seo.js');
 import('./demo-core.js');
 import('./journey-core.js');
 import('./faq-core.js');
