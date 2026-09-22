@@ -1,0 +1,59 @@
+name: SixMind V6 QA
+
+on:
+  push:
+    branches: ["v6/site-completo"]
+    paths:
+      - "sixmind-v6/**"
+      - ".github/workflows/v6-qa.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "sixmind-v6/**"
+      - ".github/workflows/v6-qa.yml"
+  workflow_dispatch:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Static QA
+        run: python sixmind-v6/qa/static-check.py
+
+      - name: JavaScript syntax
+        run: |
+          for f in sixmind-v6/src/*.js; do node --check "$f"; done
+
+      - name: Install Playwright
+        working-directory: sixmind-v6
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start static server
+        working-directory: sixmind-v6
+        run: |
+          python -m http.server 4173 > /tmp/sixmind-v6-server.log 2>&1 &
+          echo $! > /tmp/sixmind-v6-server.pid
+          sleep 2
+          curl -f http://127.0.0.1:4173/
+          curl -f http://127.0.0.1:4173/privacy.html
+          curl -f http://127.0.0.1:4173/terms.html
+
+      - name: Browser E2E and screenshots
+        working-directory: sixmind-v6
+        run: |
+          mkdir -p qa-artifacts
+          node qa/e2e.mjs
+
+      - name: Upload QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sixmind-v6-qa
+          path: sixmind-v6/qa-artifacts
+          if-no-files-found: warn
